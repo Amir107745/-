@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>استوديو عامر للبرمجة</title>
+<style>
+body{margin:0;background:#0b1020;color:#fff;font-family:Arial;text-align:center;padding:20px}
+h1{color:#a78bfa}
+textarea{width:95%;height:300px;background:#050816;color:#dbeafe;border:1px solid #6554a4;border-radius:10px;padding:10px;box-sizing:border-box;direction:ltr;text-align:left}
+button,select{padding:12px;margin:5px;border:0;border-radius:9px;background:#805ad5;color:white;font-size:15px}
+iframe{width:95%;height:300px;background:white;border:0;border-radius:10px;margin-top:10px}
+</style>
+</head>
+<body>
+<h1>💻 استوديو عامر</h1>
+<p>اكتب كود HTML وشوف النتيجة مباشرة!</p>
+<select id="lang">
+<option value="html">HTML</option>
+<option value="python">Python</option>
+</select>
+<textarea id="code"><h1>أهلاً عامر!</h1>
+<p>هذا أول مشروع إلي.</p>
+<button onclick="alert('اشتغل الزر!')">جرّب الزر</button></textarea>
+<br>
+<button onclick="run()">▶ تشغيل الكود</button>
+<button onclick="save()">💾 حفظ الكود</button>
+<iframe id="out" title="معاينة النتيجة" sandbox="allow-scripts allow-modals"></iframe>
+<script>
+function run(){
+if(document.getElementById('lang').value==='python'){
+alert('تشغيل Python يحتاج محرك Python خارجي.');
+return;
+}
+document.getElementById('out').srcdoc=document.getElementById('code').value;
+}
+function save(){
+try{
+localStorage.setItem('amer-code',document.getElementById('code').value);
+alert('تم الحفظ!');
+}catch(e){alert('تعذر الحفظ في هذا المتصفح.');}
+}
+run();
+</script>
+</body>
+</html>
